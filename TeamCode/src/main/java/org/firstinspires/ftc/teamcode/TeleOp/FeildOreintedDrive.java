@@ -30,13 +30,13 @@ public class FeildOreintedDrive extends LinearOpMode {
 
 
         //Init's the motors
-        FLeft = hardwareMap.get(DcMotor.class, "FrontLeft");
-        BLeft = hardwareMap.get(DcMotor.class, "BackLeft");
-        FRight = hardwareMap.get(DcMotor.class, "FrontRight");
-        BRight = hardwareMap.get(DcMotor.class, "BackRight");
+        FLeft = hardwareMap.get(DcMotor.class, "FLeft");
+        BLeft = hardwareMap.get(DcMotor.class, "BLeft");
+        FRight = hardwareMap.get(DcMotor.class, "FRight");
+        BRight = hardwareMap.get(DcMotor.class, "BRight");
         //Set Direction
-        FLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-        BLeft.setDirection(DcMotor.Direction.REVERSE);
+        //FLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+        //BLeft.setDirection(DcMotor.Direction.REVERSE);
         FRight.setDirection(DcMotor.Direction.REVERSE);
         BRight.setDirection(DcMotor.Direction.REVERSE);
         //zeroPower Behavior(Coast to stop/Imediate Stop)
@@ -48,8 +48,8 @@ public class FeildOreintedDrive extends LinearOpMode {
 
         IMU imu = hardwareMap.get(IMU.class, "imu");
         IMU.Parameters parameters = new IMU.Parameters(new RevHubOrientationOnRobot(
-                RevHubOrientationOnRobot.LogoFacingDirection.UP,
-                RevHubOrientationOnRobot.UsbFacingDirection.FORWARD
+                RevHubOrientationOnRobot.LogoFacingDirection.FORWARD,
+                RevHubOrientationOnRobot.UsbFacingDirection.UP
         ));
         imu.initialize(parameters);
 
@@ -129,17 +129,17 @@ public class FeildOreintedDrive extends LinearOpMode {
                         if (gamepad1.left_stick_y == -1){
                             FRight.setPower(gamepad1.right_trigger);
                             FLeft.setPower(-gamepad1.right_trigger);
-                            BRight.setPower(-gamepad1.right_trigger+0.1);
+                            BRight.setPower(-gamepad1.right_trigger);
                             BLeft.setPower(gamepad1.right_trigger);
                         }else if (gamepad1.left_stick_y == 1){
                             FRight.setPower(-gamepad1.right_trigger);
                             FLeft.setPower(gamepad1.right_trigger);
-                            BRight.setPower(gamepad1.right_trigger -0.1);
+                            BRight.setPower(gamepad1.right_trigger);
                             BLeft.setPower(-gamepad1.right_trigger);
                         }if (gamepad1.left_stick_x == -1){
                             FRight.setPower(-gamepad1.right_trigger);
                             FLeft.setPower(-gamepad1.right_trigger);
-                            BRight.setPower(-gamepad1.right_trigger+0.1);
+                            BRight.setPower(-gamepad1.right_trigger);
                             BLeft.setPower(-gamepad1.right_trigger);
                         }else if (gamepad1.left_stick_x == 1){
                             FRight.setPower(gamepad1.right_trigger);
@@ -160,9 +160,9 @@ public class FeildOreintedDrive extends LinearOpMode {
                             BLeft.setPower(gamepad1.right_trigger);
                         }else if (gamepad1.left_stick_y == -1){
                             FRight.setPower(-gamepad1.right_trigger);
-                            FLeft.setPower(gamepad1.right_trigger-0.1);
+                            FLeft.setPower(gamepad1.right_trigger);
                             BRight.setPower(gamepad1.right_trigger);
-                            BLeft.setPower(-gamepad1.right_trigger-0.1);
+                            BLeft.setPower(-gamepad1.right_trigger);
                         }else {
 
 

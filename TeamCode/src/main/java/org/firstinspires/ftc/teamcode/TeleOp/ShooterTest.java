@@ -14,40 +14,49 @@ public class ShooterTest extends LinearOpMode {
     FtcDashboard dashboard = FtcDashboard.getInstance();
     private DcMotor LFly;
     private DcMotor RFly;
-    public CRServo Transfer;
+    //public CRServo Transfer;
+    private DcMotor HShoot;
     public static double speed = 0.5;
 
     @Override
     public void runOpMode() throws InterruptedException {
 
-        LFly = hardwareMap.get(DcMotor.class , "LFly");
-        RFly = hardwareMap.get(DcMotor.class, "RFly");
-        Transfer = hardwareMap.get(CRServo.class, "Transfer");
-        RFly.setDirection(DcMotorSimple.Direction.REVERSE);
+
+        HShoot = hardwareMap.get(DcMotor.class, "HoodShooter");
+        //Transfer = hardwareMap.get(CRServo.class, "Transfer");
+
+        HShoot.setDirection(DcMotorSimple.Direction.REVERSE);
         waitForStart();
         while(opModeIsActive()){
-            if (gamepad1.a){
+//            if (gamepad1.a){
+//                while (!gamepad1.b){
+//                    LFly.setPower(-0.5);
+//                    RFly.setPower(-0.5);
+//                    //Transfer.setPower(-0.2);
+//                }
+//                LFly.setPower(0);
+//                RFly.setPower(0);
+//                //Transfer.setPower(0);
+//            }
+//
+//            if(gamepad1.right_trigger == 1){
+//                while (!gamepad1.b) {
+//
+//                    LFly.setPower(speed);
+//                    RFly.setPower(speed);
+//                    sleep(2000);
+//                    //Transfer.setPower(1);
+//                }
+//                LFly.setPower(0);
+//                RFly.setPower(0);
+//                //Transfer.setPower(0);
+//            }
+
+            if (gamepad1.left_trigger == 1){
                 while (!gamepad1.b){
-                    LFly.setPower(-0.5);
-                    RFly.setPower(-0.5);
-                    Transfer.setPower(-0.2);
+                    HShoot.setPower(speed);
                 }
-                LFly.setPower(0);
-                RFly.setPower(0);
-                Transfer.setPower(0);
-            }
-
-            if(gamepad1.right_trigger == 1){
-                while (!gamepad1.b) {
-
-                    LFly.setPower(speed);
-                    RFly.setPower(speed);
-                    sleep(2000);
-                    Transfer.setPower(1);
-                }
-                LFly.setPower(0);
-                RFly.setPower(0);
-                Transfer.setPower(0);
+                HShoot.setPower(0);
             }
         }
     }
