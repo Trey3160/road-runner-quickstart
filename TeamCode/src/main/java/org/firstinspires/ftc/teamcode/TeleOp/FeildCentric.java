@@ -29,7 +29,7 @@ public class FeildCentric extends OpMode {
         BR = hardwareMap.get(DcMotor.class, "BRight");
 
         BL.setDirection(DcMotorSimple.Direction.REVERSE);
-        FL.setDirection(DcMotorSimple.Direction.REVERSE);
+        //FL.setDirection(DcMotorSimple.Direction.REVERSE);
 
 
         odo.setEncoderResolution(GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD);
